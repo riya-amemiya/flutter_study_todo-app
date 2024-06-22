@@ -169,8 +169,6 @@ class TaskListScreen extends StatelessWidget {
     switch (option) {
       case SortOption.dueDate:
         return localizations.get('dueDate');
-      case SortOption.creationDate:
-        return localizations.get('creationDate');
       case SortOption.title:
         return localizations.get('title');
       case SortOption.category:

@@ -5,7 +5,7 @@ import 'package:daily_task_tracker/helpers/shared_preferences_helper.dart';
 import 'package:daily_task_tracker/localization/app_localizations.dart';
 import 'category_provider.dart';
 
-enum SortOption { dueDate, creationDate, title, category }
+enum SortOption { dueDate, title, category }
 
 class TaskProvider with ChangeNotifier {
   List<Task> _tasks = [];
@@ -116,9 +116,6 @@ class TaskProvider with ChangeNotifier {
     switch (_currentSortOption) {
       case SortOption.dueDate:
         taskList.sort((a, b) => a.dueDate.compareTo(b.dueDate));
-        break;
-      case SortOption.creationDate:
-        taskList.sort((a, b) => a.id!.compareTo(b.id!));
         break;
       case SortOption.title:
         taskList.sort((a, b) => a.title.compareTo(b.title));
