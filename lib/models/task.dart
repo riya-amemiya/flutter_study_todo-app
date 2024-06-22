@@ -1,5 +1,3 @@
-// lib/models/task.dart
-
 class Task {
   final int? id;
   final String title;

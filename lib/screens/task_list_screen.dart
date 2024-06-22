@@ -1,5 +1,3 @@
-// lib/screens/task_list_screen.dart
-
 import 'package:daily_task_tracker/localization/app_localizations.dart';
 import 'package:daily_task_tracker/providers/task_provider.dart';
 import 'package:daily_task_tracker/providers/category_provider.dart';

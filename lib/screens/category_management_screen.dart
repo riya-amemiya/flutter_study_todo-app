@@ -1,5 +1,3 @@
-// lib/screens/category_management_screen.dart
-
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:daily_task_tracker/providers/category_provider.dart';
