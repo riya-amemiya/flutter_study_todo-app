@@ -74,7 +74,7 @@ class _TaskEditScreenState extends State<TaskEditScreen> {
               DropdownButtonFormField<String>(
                 value: categoryProvider.categories.contains(_category)
                     ? _category
-                    : '未指定',
+                    : localizations.get('unspecified'),
                 decoration:
                     InputDecoration(labelText: localizations.get('category')),
                 items: categoryProvider.categories.map((String category) {
@@ -144,8 +144,7 @@ class _TaskEditScreenState extends State<TaskEditScreen> {
         final index = taskProvider.getTaskIndex(widget.task!);
         taskProvider.updateTask(index, task);
       }
-
-      Navigator.pop(context);
+      Navigator.popUntil(context, (route) => route.isFirst);
     }
   }
 }

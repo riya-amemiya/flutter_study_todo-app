@@ -22,7 +22,9 @@ class CategoryManagementScreen extends StatelessWidget {
         itemBuilder: (context, index) {
           final category = categoryProvider.categories[index];
           return ListTile(
-            title: Text(category),
+            title: Text(category == '未指定'
+                ? localizations.get('unspecified')
+                : category),
             trailing: category != '未指定'
                 ? Row(
                     mainAxisSize: MainAxisSize.min,

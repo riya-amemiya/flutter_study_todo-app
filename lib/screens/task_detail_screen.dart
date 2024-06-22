@@ -41,7 +41,8 @@ class TaskDetailScreen extends StatelessWidget {
             Text(
                 '${localizations.get('dueDate')}: ${task.dueDate.toLocal().toString().split(' ')[0]}'),
             const SizedBox(height: 8),
-            Text('${localizations.get('category')}: ${task.category}'),
+            Text(
+                '${localizations.get('category')}: ${task.category == '未指定' ? localizations.get('unspecified') : task.category}'),
             const SizedBox(height: 8),
             Text(
                 '${localizations.get('status')}: ${task.isCompleted ? localizations.get('completed') : localizations.get('pending')}'),
