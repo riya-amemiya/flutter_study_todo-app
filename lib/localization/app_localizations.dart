@@ -46,6 +46,9 @@ class AppLocalizations {
       'areYouSureDeleteCategory':
           'Are you sure you want to delete this category? Tasks in this category will be set to "Unspecified".',
       'pleaseSelectCategory': 'Please select a category',
+      // ignore: equal_keys_in_map
+      'allCategories': 'All Categories',
+      'unspecified': 'Unspecified',
     },
     'ja': {
       'appTitle': 'デイリータスクトラッカー',
@@ -89,6 +92,9 @@ class AppLocalizations {
       'areYouSureDeleteCategory':
           'このカテゴリーを削除してもよろしいですか？このカテゴリーのタスクは「未指定」に設定されます。',
       'pleaseSelectCategory': 'カテゴリーを選択してください',
+      // ignore: equal_keys_in_map
+      'allCategories': 'すべてのカテゴリー',
+      'unspecified': '未指定',
     },
   };
 

@@ -72,13 +72,17 @@ class _TaskEditScreenState extends State<TaskEditScreen> {
                 },
               ),
               DropdownButtonFormField<String>(
-                value: _category,
+                value: categoryProvider.categories.contains(_category)
+                    ? _category
+                    : '未指定',
                 decoration:
                     InputDecoration(labelText: localizations.get('category')),
                 items: categoryProvider.categories.map((String category) {
                   return DropdownMenuItem<String>(
                     value: category,
-                    child: Text(category),
+                    child: Text(category == '未指定'
+                        ? localizations.get('unspecified')
+                        : category),
                   );
                 }).toList(),
                 onChanged: (String? newValue) {

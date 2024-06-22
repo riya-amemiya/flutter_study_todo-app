@@ -13,8 +13,8 @@ class TaskProvider with ChangeNotifier {
   String _searchQuery = '';
   String? _selectedCategory;
   final Map<int, Timer> _deleteTimers = {};
-  late AppLocalizations _localizations;
   String _languageCode = 'ja';
+  late AppLocalizations _localizations = AppLocalizations(_languageCode);
   bool _isInitialized = false;
   final CategoryProvider categoryProvider;
 

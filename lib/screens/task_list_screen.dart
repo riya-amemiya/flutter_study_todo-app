@@ -82,19 +82,27 @@ class TaskListScreen extends StatelessWidget {
                   },
                 ),
               ),
-              DropdownButton<String>(
+              DropdownButton<String?>(
                 value: taskProvider.selectedCategory,
                 hint: Text(localizations.get('filterByCategory')),
                 onChanged: (String? newValue) {
                   taskProvider.setSelectedCategory(newValue);
                 },
-                items: categoryProvider.categories
-                    .map<DropdownMenuItem<String>>((String value) {
-                  return DropdownMenuItem<String>(
-                    value: value,
-                    child: Text(value),
-                  );
-                }).toList(),
+                items: [
+                  DropdownMenuItem<String?>(
+                    value: null,
+                    child: Text(localizations.get('allCategories')),
+                  ),
+                  ...categoryProvider.categories
+                      .map<DropdownMenuItem<String>>((String value) {
+                    return DropdownMenuItem<String>(
+                      value: value,
+                      child: Text(value == '未指定'
+                          ? localizations.get('unspecified')
+                          : value),
+                    );
+                  }),
+                ],
               ),
               Expanded(
                 child: ListView.builder(

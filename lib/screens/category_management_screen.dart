@@ -129,6 +129,7 @@ class CategoryManagementScreen extends StatelessWidget {
                   categoryProvider.editCategory(oldCategory, newCategory);
                   taskProvider.updateTaskCategory(oldCategory, newCategory);
                 }
+                // ignore: use_build_context_synchronously
                 Navigator.of(context).pop();
               },
             ),
