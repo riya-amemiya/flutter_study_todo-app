@@ -4,7 +4,7 @@ class Task {
   final String description;
   final DateTime dueDate;
   bool isCompleted;
-  late final String category;
+  String category;
 
   Task({
     this.id,
