@@ -51,6 +51,7 @@ class AppLocalizations {
       'unspecified': 'Unspecified',
       'settings': 'Settings',
       'language': 'Language',
+      'undo': 'Undo',
     },
     'ja': {
       'appTitle': 'デイリータスクトラッカー',
@@ -99,6 +100,7 @@ class AppLocalizations {
       'unspecified': '未指定',
       'settings': '設定',
       'language': '言語',
+      'undo': '元に戻す',
     },
   };
 

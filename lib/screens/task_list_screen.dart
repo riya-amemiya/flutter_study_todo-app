@@ -118,12 +118,20 @@ class TaskListScreen extends StatelessWidget {
                         child: const Icon(Icons.delete, color: Colors.white),
                       ),
                       direction: DismissDirection.endToStart,
-                      onDismissed: (direction) {
-                        taskProvider
+                      onDismissed: (direction) async {
+                        await taskProvider
                             .deleteTask(taskProvider.getTaskIndex(task));
+                        // ignore: use_build_context_synchronously
                         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                            content: Text(
-                                '${task.title} ${localizations.get("delete")}')));
+                          content: Text(
+                              '${task.title} ${localizations.get("delete")}'),
+                          action: SnackBarAction(
+                            label: localizations.get("undo"),
+                            onPressed: () {
+                              taskProvider.addTask(task);
+                            },
+                          ),
+                        ));
                       },
                       child: ListTile(
                         title: Text(
