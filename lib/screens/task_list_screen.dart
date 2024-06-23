@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'task_edit_screen.dart';
 import 'task_detail_screen.dart';
-import 'category_management_screen.dart';
+import 'settings_screen.dart'; // 新しい設定画面
 
 class TaskListScreen extends StatelessWidget {
   const TaskListScreen({super.key});
@@ -28,40 +28,13 @@ class TaskListScreen extends StatelessWidget {
           appBar: AppBar(
             title: Text(localizations.get('appTitle')),
             actions: [
-              DropdownButton<String>(
-                value: taskProvider.languageCode,
-                onChanged: (String? newValue) {
-                  if (newValue != null) {
-                    taskProvider.setLanguage(newValue);
-                  }
-                },
-                items: const [
-                  DropdownMenuItem(value: 'ja', child: Text('日本語')),
-                  DropdownMenuItem(value: 'en', child: Text('English')),
-                ],
-              ),
-              DropdownButton<SortOption>(
-                value: taskProvider.currentSortOption,
-                onChanged: (SortOption? newValue) {
-                  if (newValue != null) {
-                    taskProvider.setSortOption(newValue);
-                  }
-                },
-                items: SortOption.values
-                    .map<DropdownMenuItem<SortOption>>((SortOption value) {
-                  return DropdownMenuItem<SortOption>(
-                    value: value,
-                    child: Text(_getSortOptionText(value, localizations)),
-                  );
-                }).toList(),
-              ),
               IconButton(
-                icon: const Icon(Icons.category),
+                icon: const Icon(Icons.settings),
                 onPressed: () {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => const CategoryManagementScreen()),
+                        builder: (context) => const SettingsScreen()),
                   );
                 },
               ),
@@ -82,27 +55,54 @@ class TaskListScreen extends StatelessWidget {
                   },
                 ),
               ),
-              DropdownButton<String?>(
-                value: taskProvider.selectedCategory,
-                hint: Text(localizations.get('filterByCategory')),
-                onChanged: (String? newValue) {
-                  taskProvider.setSelectedCategory(newValue);
-                },
-                items: [
-                  DropdownMenuItem<String?>(
-                    value: null,
-                    child: Text(localizations.get('allCategories')),
-                  ),
-                  ...categoryProvider.categories
-                      .map<DropdownMenuItem<String>>((String value) {
-                    return DropdownMenuItem<String>(
-                      value: value,
-                      child: Text(value == '未指定'
-                          ? localizations.get('unspecified')
-                          : value),
-                    );
-                  }),
-                ],
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: DropdownButton<String?>(
+                        isExpanded: true,
+                        value: taskProvider.selectedCategory,
+                        hint: Text(localizations.get('filterByCategory')),
+                        onChanged: (String? newValue) {
+                          taskProvider.setSelectedCategory(newValue);
+                        },
+                        items: [
+                          DropdownMenuItem<String?>(
+                            value: null,
+                            child: Text(localizations.get('allCategories')),
+                          ),
+                          ...categoryProvider.categories
+                              .map<DropdownMenuItem<String>>((String value) {
+                            return DropdownMenuItem<String>(
+                              value: value,
+                              child: Text(value == '未指定'
+                                  ? localizations.get('unspecified')
+                                  : value),
+                            );
+                          }).toList(),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(width: 8),
+                    DropdownButton<SortOption>(
+                      value: taskProvider.currentSortOption,
+                      onChanged: (SortOption? newValue) {
+                        if (newValue != null) {
+                          taskProvider.setSortOption(newValue);
+                        }
+                      },
+                      items: SortOption.values
+                          .map<DropdownMenuItem<SortOption>>(
+                              (SortOption value) {
+                        return DropdownMenuItem<SortOption>(
+                          value: value,
+                          child: Text(_getSortOptionText(value, localizations)),
+                        );
+                      }).toList(),
+                    ),
+                  ],
+                ),
               ),
               Expanded(
                 child: ListView.builder(
@@ -135,7 +135,7 @@ class TaskListScreen extends StatelessWidget {
                           ),
                         ),
                         subtitle: Text(
-                            '${localizations.get("dueDate")}: ${task.dueDate.toLocal().toString().split(' ')[0]} - ${localizations.get("category")}: ${task.category == '未指定' ? localizations.get("unspecified") : task.category}'),
+                            '${localizations.get("dueDate")}: ${task.dueDate.toLocal().toString().split(' ')[0]} - ${localizations.get("category")}: ${task.category}'),
                         trailing: Checkbox(
                           value: task.isCompleted,
                           onChanged: (bool? value) {

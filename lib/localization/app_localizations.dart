@@ -49,6 +49,8 @@ class AppLocalizations {
       // ignore: equal_keys_in_map
       'allCategories': 'All Categories',
       'unspecified': 'Unspecified',
+      'settings': 'Settings',
+      'language': 'Language',
     },
     'ja': {
       'appTitle': 'デイリータスクトラッカー',
@@ -95,6 +97,8 @@ class AppLocalizations {
       // ignore: equal_keys_in_map
       'allCategories': 'すべてのカテゴリー',
       'unspecified': '未指定',
+      'settings': '設定',
+      'language': '言語',
     },
   };
 
