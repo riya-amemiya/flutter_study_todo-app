@@ -3,7 +3,7 @@ class AppLocalizations {
 
   AppLocalizations(this.languageCode);
 
-  static final Map<String, Map<String, String>> _localizedValues = {
+  static const Map<String, Map<String, String>> _localizedValues = {
     'en': {
       'appTitle': 'Daily Task Tracker',
       'addTask': 'Add Task',
@@ -20,18 +20,12 @@ class AppLocalizations {
       'filterByCategory': 'Filter by category',
       'allCategories': 'All categories',
       'sortBy': 'Sort by',
-      // ignore: equal_keys_in_map
-      'dueDate': 'Due Date',
       'creationDate': 'Creation Date',
       'completed': 'Completed',
       'pending': 'Pending',
       'pleaseEnterTitle': 'Please enter a title',
       'pleaseEnterCategory': 'Please enter a category',
       'status': 'Status',
-      // ignore: equal_keys_in_map
-      'completed': 'Completed',
-      // ignore: equal_keys_in_map
-      'pending': 'Pending',
       'deleteTask': 'Delete Task',
       'areYouSureDeleteTask': 'Are you sure you want to delete this task?',
       'manageCategories': 'Manage Categories',
@@ -40,14 +34,10 @@ class AppLocalizations {
       'add': 'Add',
       'editCategory': 'Edit Category',
       'enterNewCategoryName': 'Enter new category name',
-      // ignore: equal_keys_in_map
-      'save': 'Save',
       'deleteCategory': 'Delete Category',
       'areYouSureDeleteCategory':
           'Are you sure you want to delete this category? Tasks in this category will be set to "Unspecified".',
       'pleaseSelectCategory': 'Please select a category',
-      // ignore: equal_keys_in_map
-      'allCategories': 'All Categories',
       'unspecified': 'Unspecified',
       'settings': 'Settings',
       'language': 'Language',
@@ -69,18 +59,12 @@ class AppLocalizations {
       'filterByCategory': 'カテゴリでフィルター',
       'allCategories': 'すべてのカテゴリ',
       'sortBy': '並び替え',
-      // ignore: equal_keys_in_map
-      'dueDate': '期限',
       'creationDate': '作成日',
       'completed': '完了',
       'pending': '未完了',
       'pleaseEnterTitle': 'タイトルを入力してください',
       'pleaseEnterCategory': 'カテゴリーを入力してください',
       'status': '状態',
-      // ignore: equal_keys_in_map
-      'completed': '完了',
-      // ignore: equal_keys_in_map
-      'pending': '未完了',
       'deleteTask': 'タスクを削除',
       'areYouSureDeleteTask': 'このタスクを削除してもよろしいですか？',
       'manageCategories': 'カテゴリー管理',
@@ -89,14 +73,10 @@ class AppLocalizations {
       'add': '追加',
       'editCategory': 'カテゴリーを編集',
       'enterNewCategoryName': '新しいカテゴリー名を入力',
-      // ignore: equal_keys_in_map
-      'save': '保存',
       'deleteCategory': 'カテゴリーを削除',
       'areYouSureDeleteCategory':
           'このカテゴリーを削除してもよろしいですか？このカテゴリーのタスクは「未指定」に設定されます。',
       'pleaseSelectCategory': 'カテゴリーを選択してください',
-      // ignore: equal_keys_in_map
-      'allCategories': 'すべてのカテゴリー',
       'unspecified': '未指定',
       'settings': '設定',
       'language': '言語',
