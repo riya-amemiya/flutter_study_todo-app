@@ -80,7 +80,7 @@ class TaskListScreen extends StatelessWidget {
                                   ? localizations.get('unspecified')
                                   : value),
                             );
-                          }).toList(),
+                          }),
                         ],
                       ),
                     ),
