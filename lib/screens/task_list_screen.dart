@@ -143,7 +143,7 @@ class TaskListScreen extends StatelessWidget {
                           ),
                         ),
                         subtitle: Text(
-                            '${localizations.get("dueDate")}: ${task.dueDate.toLocal().toString().split(' ')[0]} - ${localizations.get("category")}: ${task.category}'),
+                            '${localizations.get("dueDate")}: ${task.dueDate.toLocal().toString().split(' ')[0]} - ${localizations.get("category")}: ${task.category == '未指定' ? localizations.get("unspecified") : task.category}'),
                         trailing: Checkbox(
                           value: task.isCompleted,
                           onChanged: (bool? value) {
