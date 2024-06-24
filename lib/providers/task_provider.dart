@@ -1,7 +1,7 @@
 import 'dart:async';
+import 'package:daily_task_tracker/storage/storage.manager.dart';
 import 'package:flutter/foundation.dart';
 import 'package:daily_task_tracker/models/task.dart';
-import 'package:daily_task_tracker/storage/local_storage.dart';
 import 'package:daily_task_tracker/localization/app_localizations.dart';
 import 'category_provider.dart';
 
@@ -17,7 +17,7 @@ class TaskProvider with ChangeNotifier {
   late AppLocalizations _localizations = AppLocalizations(_languageCode);
   bool _isInitialized = false;
   final CategoryProvider categoryProvider;
-  final LocalStorage _storage = LocalStorage();
+  final StorageManager _storage = StorageManager();
 
   TaskProvider(this.categoryProvider) {
     _init();

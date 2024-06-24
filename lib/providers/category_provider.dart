@@ -1,8 +1,8 @@
+import 'package:daily_task_tracker/storage/storage.manager.dart';
 import 'package:flutter/foundation.dart';
-import 'package:daily_task_tracker/storage/local_storage.dart';
 
 class CategoryProvider with ChangeNotifier {
-  final LocalStorage _storage = LocalStorage();
+  final StorageManager _storage = StorageManager();
   List<String> _categories = [];
   List<String> get categories => ['未指定', ..._categories];
 
