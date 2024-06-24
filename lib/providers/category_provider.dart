@@ -1,9 +1,9 @@
 import 'package:flutter/foundation.dart';
-import 'package:daily_task_tracker/helpers/shared_preferences_helper.dart';
+import 'package:daily_task_tracker/storage/local_storage.dart';
 
 class CategoryProvider with ChangeNotifier {
+  final LocalStorage _storage = LocalStorage();
   List<String> _categories = [];
-
   List<String> get categories => ['未指定', ..._categories];
 
   CategoryProvider() {
@@ -11,7 +11,7 @@ class CategoryProvider with ChangeNotifier {
   }
 
   Future<void> _loadCategories() async {
-    _categories = await SharedPreferencesHelper.getCategories();
+    _categories = await _storage.getCategories();
     notifyListeners();
   }
 
@@ -43,6 +43,6 @@ class CategoryProvider with ChangeNotifier {
   }
 
   Future<void> _saveCategories() async {
-    await SharedPreferencesHelper.saveCategories(_categories);
+    await _storage.saveCategories(_categories);
   }
 }
