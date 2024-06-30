@@ -1,7 +1,7 @@
 import 'dart:async';
+import 'package:daily_task_tracker/storage/storage.manager.dart';
 import 'package:flutter/foundation.dart';
 import 'package:daily_task_tracker/models/task.dart';
-import 'package:daily_task_tracker/helpers/shared_preferences_helper.dart';
 import 'package:daily_task_tracker/localization/app_localizations.dart';
 import 'category_provider.dart';
 
@@ -17,6 +17,7 @@ class TaskProvider with ChangeNotifier {
   late AppLocalizations _localizations = AppLocalizations(_languageCode);
   bool _isInitialized = false;
   final CategoryProvider categoryProvider;
+  final StorageManager _storage = StorageManager();
 
   TaskProvider(this.categoryProvider) {
     _init();
@@ -58,7 +59,7 @@ class TaskProvider with ChangeNotifier {
   String? get selectedCategory => _selectedCategory;
 
   Future<void> loadTasks() async {
-    _tasks = await SharedPreferencesHelper.getTasks();
+    _tasks = await _storage.getTasks();
     notifyListeners();
   }
 
@@ -127,7 +128,7 @@ class TaskProvider with ChangeNotifier {
   }
 
   Future<void> _saveTasks() async {
-    await SharedPreferencesHelper.saveTasks(_tasks);
+    await _storage.saveTasks(_tasks);
   }
 
   void _scheduleTaskDeletion(int index) {
@@ -142,12 +143,12 @@ class TaskProvider with ChangeNotifier {
   }
 
   Future<void> _loadLanguage() async {
-    _languageCode = await SharedPreferencesHelper.getLanguage();
+    _languageCode = await _storage.getLanguage();
     _localizations = AppLocalizations(_languageCode);
   }
 
   Future<void> setLanguage(String languageCode) async {
-    await SharedPreferencesHelper.setLanguage(languageCode);
+    await _storage.setLanguage(languageCode);
     _languageCode = languageCode;
     _localizations = AppLocalizations(_languageCode);
     notifyListeners();
